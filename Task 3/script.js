@@ -15,7 +15,7 @@ const ENDPOINT = "https://api.github.com/users";
 
 const crateCard = element => {
   const card = document.createElement("div");
-  card.classList.add("card");
+
   card.style.minWidth = "380px";
   card.style.maxWidth = "100%";
   card.style.border = "1px solid black";
@@ -40,8 +40,6 @@ const getUsers = async () => {
     const data = await response.json();
 
     data.forEach(element => crateCard(element));
-
-    console.log(data); // trinti
   } catch (err) {
     console.error(err);
   }
@@ -52,7 +50,7 @@ document.getElementById("btn").addEventListener("click", e => {
   document.getElementById("btn").disabled = true;
   document.getElementById("message").style.display = "none";
   document.getElementById("output").style.display = "flex";
-
+  document.getElementById("output").style.minWidth = "500px";
   document.getElementById("output").style.flexWrap = "wrap";
   getUsers();
 });
