@@ -17,24 +17,41 @@ const myForm = document
     const weightKG = document.getElementById("search").value;
 
     const weightLBs = Math.round(weightKG * 2.2046 * 100) / 100;
-    const resultLbs = document.createElement("p");
-    resultLbs.textContent = "Pounds " + weightLBs + " lb";
+    document.querySelector(".resultLbs").textContent =
+      "Pounds " + weightLBs + " lb";
 
     const weightGrams = Math.round(weightKG / 0.001);
-    const resultGrams = document.createElement("p");
-    resultGrams.textContent = `Grams ${weightGrams} g`;
+
+    document.querySelector(
+      ".resultGrams"
+    ).textContent = `Grams ${weightGrams} g`;
 
     const weightOz = Math.round(weightKG * 35.274 * 100) / 100;
-    const resultOz = document.createElement("p");
-    resultOz.textContent = `Ounces ${weightOz} Oz`;
 
-    const text = "Your weight in:";
-
-    document
-      .getElementById("output")
-      .append(text, resultLbs, resultGrams, resultOz);
+    document.querySelector(".resultOz").textContent = `Ounces ${weightOz} Oz`;
 
     console.log(weightLBs);
     console.log(weightGrams);
     console.log(weightOz);
   });
+
+const output = () => {
+  const resultLbs = document.createElement("p");
+  resultLbs.classList.add("resultLbs");
+
+  const resultGrams = document.createElement("p");
+  resultGrams.classList.add("resultGrams");
+
+  const resultOz = document.createElement("p");
+  resultOz.classList.add("resultOz");
+
+  const output = document.getElementById("output");
+  output.style.textAlign = "center";
+  output.style.fontSize = "2.5em";
+
+  const text = "Your weight in:";
+
+  output.append(text, resultLbs, resultGrams, resultOz);
+};
+
+output();
